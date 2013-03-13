@@ -955,7 +955,7 @@ containing a value of this type.
         public static final int yellow=0x7f020086;
     }
     public static final class id {
-        public static final int LinearLayout=0x7f040035;
+        public static final int LinearLayout=0x7f040036;
         public static final int RelativeLayout1=0x7f040033;
         public static final int abs__action_bar=0x7f040022;
         public static final int abs__action_bar_container=0x7f040021;
@@ -1000,17 +1000,22 @@ containing a value of this type.
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f040027;
         public static final int homeAsUp=0x7f040006;
+        public static final int icon=0x7f04003b;
         public static final int listMode=0x7f040002;
-        public static final int listView=0x7f040036;
-        public static final int list_image=0x7f040037;
+        public static final int listView=0x7f040035;
+        public static final int list_image=0x7f04003c;
+        public static final int new_fragment=0x7f040038;
         public static final int normal=0x7f040001;
+        public static final int pager=0x7f040039;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
-        public static final int subtitle=0x7f040039;
+        public static final int simple_fragment=0x7f040037;
+        public static final int subtitle=0x7f04003e;
         public static final int tabMode=0x7f040003;
+        public static final int text=0x7f04003a;
         public static final int textView1=0x7f040034;
-        public static final int title=0x7f040038;
+        public static final int title=0x7f04003d;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
     }
@@ -1047,9 +1052,13 @@ containing a value of this type.
         public static final int activity_main=0x7f03001a;
         public static final int activity_media=0x7f03001b;
         public static final int activity_splash=0x7f03001c;
-        public static final int list_row=0x7f03001d;
-        public static final int sherlock_spinner_dropdown_item=0x7f03001e;
-        public static final int sherlock_spinner_item=0x7f03001f;
+        public static final int fragment_stack=0x7f03001d;
+        public static final int fragment_tabs_pager=0x7f03001e;
+        public static final int hello_world=0x7f03001f;
+        public static final int list_item_icon_text=0x7f030020;
+        public static final int list_row=0x7f030021;
+        public static final int sherlock_spinner_dropdown_item=0x7f030022;
+        public static final int sherlock_spinner_item=0x7f030023;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1101,6 +1110,7 @@ containing a value of this type.
         public static final int hello=0x7f090013;
         public static final int hello_world=0x7f090010;
         public static final int menu_settings=0x7f090011;
+        public static final int new_fragment=0x7f090014;
         public static final int title_activity_main=0x7f090012;
     }
     public static final class style {

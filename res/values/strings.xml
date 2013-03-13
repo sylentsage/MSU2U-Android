@@ -5,6 +5,7 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MSU2U</string>
     <string name="hello">Hello World, Custom Title Bar from CoderzHeaven</string>
+    <string name="new_fragment">New fragment</string>
     <drawable name="white">#ffffff</drawable>
     <drawable name="black">#000000</drawable>
     <drawable name="blue">#2554C7</drawable>
