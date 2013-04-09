@@ -815,8 +815,8 @@ containing a value of this type.
         public static final int padding_small=0x7f070011;
     }
     public static final class drawable {
-        public static final int Hotpink=0x7f02008a;
-        public static final int PowderBlue=0x7f020088;
+        public static final int Hotpink=0x7f02008b;
+        public static final int PowderBlue=0x7f020089;
         public static final int abs__ab_bottom_solid_dark_holo=0x7f020000;
         public static final int abs__ab_bottom_solid_inverse_holo=0x7f020001;
         public static final int abs__ab_bottom_solid_light_holo=0x7f020002;
@@ -930,16 +930,16 @@ containing a value of this type.
         public static final int abs__textfield_searchview_right_holo_light=0x7f02006e;
         public static final int arrow=0x7f02006f;
         public static final int bigarrow=0x7f020070;
-        public static final int black=0x7f02007f;
-        public static final int blue=0x7f020080;
-        public static final int brown=0x7f020089;
+        public static final int black=0x7f020080;
+        public static final int blue=0x7f020081;
+        public static final int brown=0x7f02008a;
         public static final int calender=0x7f020071;
         public static final int contact=0x7f020072;
         public static final int facebook=0x7f020073;
         public static final int gradient_bg=0x7f020074;
         public static final int gradient_bg_hover=0x7f020075;
-        public static final int green=0x7f020081;
-        public static final int grey=0x7f020085;
+        public static final int green=0x7f020082;
+        public static final int grey=0x7f020086;
         public static final int ic_action_search=0x7f020076;
         public static final int ic_launcher=0x7f020077;
         public static final int ic_news=0x7f020078;
@@ -947,16 +947,19 @@ containing a value of this type.
         public static final int list_selector=0x7f02007a;
         public static final int mainmenu=0x7f02007b;
         public static final int map=0x7f02007c;
-        public static final int orange=0x7f020082;
-        public static final int pink=0x7f020083;
-        public static final int red=0x7f020086;
-        public static final int splashscreen=0x7f02007d;
-        public static final int violet=0x7f020084;
-        public static final int white=0x7f02007e;
-        public static final int yellow=0x7f020087;
+        public static final int midwesternstatelogo=0x7f02007d;
+        public static final int orange=0x7f020083;
+        public static final int pink=0x7f020084;
+        public static final int red=0x7f020087;
+        public static final int splashscreen=0x7f02007e;
+        public static final int violet=0x7f020085;
+        public static final int white=0x7f02007f;
+        public static final int yellow=0x7f020088;
     }
     public static final class id {
-        public static final int LinearLayout=0x7f040036;
+        public static final int DepartmentEditText=0x7f04003e;
+        public static final int LinearLayout=0x7f040038;
+        public static final int LinearLayout1=0x7f040035;
         public static final int RelativeLayout1=0x7f040033;
         public static final int abs__action_bar=0x7f040022;
         public static final int abs__action_bar_container=0x7f040021;
@@ -1000,26 +1003,36 @@ containing a value of this type.
         public static final int abs__up=0x7f04000b;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f040027;
-        public static final int fragment_content=0x7f040037;
+        public static final int emailEditText=0x7f040040;
+        public static final int faxEditText=0x7f040042;
+        public static final int fragment_content=0x7f040039;
         public static final int homeAsUp=0x7f040006;
-        public static final int icon=0x7f04003c;
+        public static final int icon=0x7f040048;
         public static final int listMode=0x7f040002;
-        public static final int listView=0x7f040035;
-        public static final int list_image=0x7f04003f;
-        public static final int new_fragment=0x7f040039;
+        public static final int listView=0x7f040037;
+        public static final int listView1=0x7f040036;
+        public static final int list_image=0x7f04004b;
+        public static final int nameEditText=0x7f04003f;
+        public static final int new_fragment=0x7f040045;
         public static final int normal=0x7f040001;
-        public static final int pager=0x7f04003a;
+        public static final int pager=0x7f040046;
+        public static final int phone1EditText=0x7f04003d;
+        public static final int photoImageView=0x7f040043;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
-        public static final int simple_fragment=0x7f040038;
-        public static final int subtitle=0x7f040041;
+        public static final int simple_fragment=0x7f040044;
+        public static final int subtitle=0x7f04004d;
         public static final int tabMode=0x7f040003;
-        public static final int text=0x7f04003b;
-        public static final int text1=0x7f04003d;
-        public static final int text2=0x7f04003e;
+        public static final int text=0x7f040047;
+        public static final int text1=0x7f040049;
+        public static final int text2=0x7f04004a;
         public static final int textView1=0x7f040034;
-        public static final int title=0x7f040040;
+        public static final int textView2=0x7f04003a;
+        public static final int textView3=0x7f04003b;
+        public static final int textView4=0x7f04003c;
+        public static final int textView5=0x7f040041;
+        public static final int title=0x7f04004c;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
     }
@@ -1057,18 +1070,24 @@ containing a value of this type.
         public static final int activity_media=0x7f03001b;
         public static final int activity_rest_loader=0x7f03001c;
         public static final int activity_splash=0x7f03001d;
-        public static final int fragment_stack=0x7f03001e;
-        public static final int fragment_tabs_pager=0x7f03001f;
-        public static final int hello_world=0x7f030020;
-        public static final int item_label_list=0x7f030021;
-        public static final int list_item_icon_text=0x7f030022;
-        public static final int list_item_icon_text_2=0x7f030023;
-        public static final int list_item_text_dynamic=0x7f030024;
-        public static final int list_row=0x7f030025;
-        public static final int sherlock_spinner_dropdown_item=0x7f030026;
-        public static final int sherlock_spinner_item=0x7f030027;
+        public static final int activity_viewcontact=0x7f03001e;
+        public static final int fragment_stack=0x7f03001f;
+        public static final int fragment_tabs_pager=0x7f030020;
+        public static final int hello_world=0x7f030021;
+        public static final int item_label_list=0x7f030022;
+        public static final int list_item_icon_text=0x7f030023;
+        public static final int list_item_icon_text_2=0x7f030024;
+        public static final int list_item_text_dynamic=0x7f030025;
+        public static final int list_row=0x7f030026;
+        public static final int sherlock_spinner_dropdown_item=0x7f030027;
+        public static final int sherlock_spinner_item=0x7f030028;
     }
     public static final class string {
+        public static final int DepartmentStatic=0x7f090016;
+        public static final int EmailStatic=0x7f090019;
+        public static final int FaxStatic=0x7f090018;
+        public static final int NamesStatic=0x7f090015;
+        public static final int Phone1Static=0x7f090017;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abs__action_bar_home_description=0x7f090000;
@@ -1119,6 +1138,7 @@ containing a value of this type.
         public static final int hello_world=0x7f090010;
         public static final int menu_settings=0x7f090011;
         public static final int new_fragment=0x7f090014;
+        public static final int textview=0x7f09001a;
         public static final int title_activity_main=0x7f090012;
     }
     public static final class style {

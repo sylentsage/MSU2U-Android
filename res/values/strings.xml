@@ -19,5 +19,11 @@
     <drawable name="PowderBlue">#b0e0e6</drawable>
     <drawable name="brown">#2F1700</drawable>
     <drawable name="Hotpink">#7D2252</drawable>
+    <string name="NamesStatic">Name</string>
+    <string name="DepartmentStatic">Department</string>
+    <string name="Phone1Static">Phone 1</string>
+    <string name="FaxStatic">Fax</string>
+    <string name="EmailStatic">Email</string>
+    <string name="textview">TextView</string>
 
 </resources>

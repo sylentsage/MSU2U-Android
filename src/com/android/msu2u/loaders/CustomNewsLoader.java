@@ -16,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -41,6 +42,7 @@ import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.android.msu2u.ContainerNews;
 import com.android.msu2u.R;
 
 /**
@@ -51,6 +53,7 @@ public class CustomNewsLoader extends SherlockFragmentActivity {
 	// we use this to temporarily hold our json rows, for each row we return 
 	// until we use the array to create our events object.
 	static ArrayList<String> resultRow;
+	static List<News> entries = null;
 		
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,7 +204,7 @@ public class CustomNewsLoader extends SherlockFragmentActivity {
         @Override public List<News> loadInBackground() {
         	
         	String result = "";
-        	List<News> entries = null;
+        	//List<News> entries = null;
         	
         	// http post 
         	try{
@@ -476,6 +479,11 @@ public class CustomNewsLoader extends SherlockFragmentActivity {
 
         @Override public void onListItemClick(ListView l, View v, int position, long id) {
             // Insert desired behavior here.
+        	//News item = (News) ((Menu) entries).getItem(position);
+        	//Intent anotherActivityIntent = new Intent(this, ContainerNews.class);
+        	//anotherActivityIntent.putExtra("my.package.dataToPass",item);
+        	//startActivity(anotherActivityIntent);
+        	
             Log.i("LoaderCustom", "Item clicked: " + id);
         }
 
