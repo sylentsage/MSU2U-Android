@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Custom Row for List View -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+ 
+ 
+    <!-- Title Of Button/List Item-->
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
+        android:src="@drawable/map" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/icon"
+        android:layout_toRightOf="@+id/icon"
+        android:textColor="#040404"
+        android:textSize="15dip"
+        android:textStyle="bold"
+        android:paddingLeft="5dip"
+        android:typeface="sans" />
+ 
+    <!-- Sub Title --> 
+     <TextView
+         android:id="@+id/text2"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/text"
+         android:layout_toRightOf="@+id/icon"
+         android:paddingLeft="5dip"
+         android:textColor="#343434"
+         android:textSize="10dip" />
+     
+
+ 
+</RelativeLayout>

@@ -8,23 +8,54 @@
 
 package com.android.msu2u;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v4.view.ViewPager;
+import android.widget.TabHost;
 
-public class CampusMap extends SherlockActivity {
-	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.activity_campusmap);
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.android.msu2u.adapters.TabsAdapter;
+import com.android.msu2u.loaders.FragmentStackSupport;
+
+public class CampusMap extends SherlockFragmentActivity  {
+	TabHost mTabHost;
+    ViewPager  mViewPager;
+    TabsAdapter mTabsAdapter;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+    	//I can Change the Theme 
+    	super.onCreate(savedInstanceState);
+    	
+    	setContentView(R.layout.fragment_tabs_pager);
+    	mTabHost = (TabHost)findViewById(android.R.id.tabhost);
+        mTabHost.setup();
         
-        TextView txtProduct = (TextView) findViewById(R.id.textView1);
+        mViewPager = (ViewPager)findViewById(R.id.pager);
         
-        Intent i = getIntent();
-        // getting attached intent data
-        String menu = i.getStringExtra("button");
-        // displaying selected button name
-        txtProduct.setText(menu);
-	} // end OnCreate
-} // end CampusMap class
+        mTabsAdapter = new TabsAdapter(this, mTabHost, mViewPager);
+        
+        mTabsAdapter.addTab(mTabHost.newTabSpec("simple").setIndicator("View1"),
+                FragmentStackSupport.CountingFragment.class, null);
+        mTabsAdapter.addTab(mTabHost.newTabSpec("simple").setIndicator("View2"),
+                FragmentStackSupport.CountingFragment.class, null);
+
+        
+        /*mTabsAdapter.addTab(mTabHost.newTabSpec("contacts").setIndicator("Sports"),
+                LoaderCursorSupport.CursorLoaderListFragment.class, null);
+        mTabsAdapter.addTab(mTabHost.newTabSpec("custom").setIndicator("Events"),
+                LoaderCustomSupport.AppListFragment.class, null);
+        mTabsAdapter.addTab(mTabHost.newTabSpec("throttle").setIndicator("Throttle"),
+                LoaderThrottleSupport.ThrottledLoaderListFragment.class, null); */
+        
+        if (savedInstanceState != null) {
+            mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
+        }
+        
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("tab", mTabHost.getCurrentTabTag());
+    }
+}
