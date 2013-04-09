@@ -264,8 +264,8 @@ public class CustomNewsLoader extends SherlockFragmentActivity {
         			resultRow.setDocCreator(json_data.getString("Doc_Creator"));
         			resultRow.setCategory1(json_data.getString("Category_1"));
         			resultRow.setCategory2(json_data.getString("Category_2"));
-        			resultRow.setShortDescription(json_data.getString("Short_Decription"));
-        			resultRow.setLongDescription(json_data.getString("Long_Decription"));
+        			resultRow.setShortDescription(json_data.getString("Short_Description"));
+        			resultRow.setLongDescription(json_data.getString("Long_Description"));
         			resultRow.setMediaID(json_data.getInt("Media_ID"));
         			resultRow.setSourceID(json_data.getInt("Source_ID"));
         			resultRow.setArticleLink(json_data.getString("Article_Link"));
@@ -413,7 +413,7 @@ public class CustomNewsLoader extends SherlockFragmentActivity {
             News item = getItem(position);
             //((ImageView)view.findViewById(R.id.icon)).setImageDrawable(item.geteIcon());
             ((TextView)view.findViewById(R.id.text)).setText(item.getTitle());
-            ((TextView)view.findViewById(R.id.text2)).setText(item.getShortDescription());
+            //((TextView)view.findViewById(R.id.text2)).setText(item.getShortDescription());
 
             return view;
         }
@@ -435,7 +435,7 @@ public class CustomNewsLoader extends SherlockFragmentActivity {
 
             // Give some text to display if there is no data.  In a real
             // application this would come from a resource.
-            setEmptyText("No applications");
+            setEmptyText("No News");
 
             // We have a menu item to show in action bar.
             setHasOptionsMenu(true);

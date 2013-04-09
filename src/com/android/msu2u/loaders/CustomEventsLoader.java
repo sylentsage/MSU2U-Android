@@ -427,7 +427,7 @@ public class CustomEventsLoader extends SherlockFragmentActivity {
 
             // Give some text to display if there is no data.  In a real
             // application this would come from a resource.
-            setEmptyText("No applications");
+            setEmptyText("No Events");
 
             // We have a menu item to show in action bar.
             setHasOptionsMenu(true);
