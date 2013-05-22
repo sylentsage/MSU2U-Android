@@ -32,6 +32,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebSettings;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -58,7 +61,7 @@ public class CustomNewsLoader extends SherlockFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         FragmentManager fm = getSupportFragmentManager();
         
         // Create the list fragment and add it as our sole content.
@@ -479,6 +482,8 @@ public class CustomNewsLoader extends SherlockFragmentActivity {
 
         @Override public void onListItemClick(ListView l, View v, int position, long id) {
             // Insert desired behavior here.
+        	//WebView webview = (WebView) findViewById(android.R.id.);
+        	
         	//News item = (News) ((Menu) entries).getItem(position);
         	//Intent anotherActivityIntent = new Intent(this, ContainerNews.class);
         	//anotherActivityIntent.putExtra("my.package.dataToPass",item);

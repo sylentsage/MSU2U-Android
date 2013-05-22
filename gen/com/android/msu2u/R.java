@@ -815,8 +815,8 @@ containing a value of this type.
         public static final int padding_small=0x7f070011;
     }
     public static final class drawable {
-        public static final int Hotpink=0x7f02008b;
-        public static final int PowderBlue=0x7f020089;
+        public static final int Hotpink=0x7f02008c;
+        public static final int PowderBlue=0x7f02008a;
         public static final int abs__ab_bottom_solid_dark_holo=0x7f020000;
         public static final int abs__ab_bottom_solid_inverse_holo=0x7f020001;
         public static final int abs__ab_bottom_solid_light_holo=0x7f020002;
@@ -930,31 +930,32 @@ containing a value of this type.
         public static final int abs__textfield_searchview_right_holo_light=0x7f02006e;
         public static final int arrow=0x7f02006f;
         public static final int bigarrow=0x7f020070;
-        public static final int black=0x7f020080;
-        public static final int blue=0x7f020081;
-        public static final int brown=0x7f02008a;
+        public static final int black=0x7f020081;
+        public static final int blue=0x7f020082;
+        public static final int brown=0x7f02008b;
         public static final int calender=0x7f020071;
-        public static final int contact=0x7f020072;
-        public static final int facebook=0x7f020073;
-        public static final int gradient_bg=0x7f020074;
-        public static final int gradient_bg_hover=0x7f020075;
-        public static final int green=0x7f020082;
-        public static final int grey=0x7f020086;
-        public static final int ic_action_search=0x7f020076;
-        public static final int ic_launcher=0x7f020077;
-        public static final int ic_news=0x7f020078;
-        public static final int image_bg=0x7f020079;
-        public static final int list_selector=0x7f02007a;
-        public static final int mainmenu=0x7f02007b;
-        public static final int map=0x7f02007c;
-        public static final int midwesternstatelogo=0x7f02007d;
-        public static final int orange=0x7f020083;
-        public static final int pink=0x7f020084;
-        public static final int red=0x7f020087;
-        public static final int splashscreen=0x7f02007e;
-        public static final int violet=0x7f020085;
-        public static final int white=0x7f02007f;
-        public static final int yellow=0x7f020088;
+        public static final int campus_map=0x7f020072;
+        public static final int contact=0x7f020073;
+        public static final int facebook=0x7f020074;
+        public static final int gradient_bg=0x7f020075;
+        public static final int gradient_bg_hover=0x7f020076;
+        public static final int green=0x7f020083;
+        public static final int grey=0x7f020087;
+        public static final int ic_action_search=0x7f020077;
+        public static final int ic_launcher=0x7f020078;
+        public static final int ic_news=0x7f020079;
+        public static final int image_bg=0x7f02007a;
+        public static final int list_selector=0x7f02007b;
+        public static final int mainmenu=0x7f02007c;
+        public static final int map=0x7f02007d;
+        public static final int midwesternstatelogo=0x7f02007e;
+        public static final int orange=0x7f020084;
+        public static final int pink=0x7f020085;
+        public static final int red=0x7f020088;
+        public static final int splashscreen=0x7f02007f;
+        public static final int violet=0x7f020086;
+        public static final int white=0x7f020080;
+        public static final int yellow=0x7f020089;
     }
     public static final class id {
         public static final int DepartmentEditText=0x7f04003e;
@@ -1034,6 +1035,7 @@ containing a value of this type.
         public static final int textView5=0x7f040041;
         public static final int title=0x7f04004c;
         public static final int useLogo=0x7f040004;
+        public static final int webview1=0x7f04004e;
         public static final int wrap_content=0x7f040000;
     }
     public static final class integer {
@@ -1081,6 +1083,7 @@ containing a value of this type.
         public static final int list_row=0x7f030026;
         public static final int sherlock_spinner_dropdown_item=0x7f030027;
         public static final int sherlock_spinner_item=0x7f030028;
+        public static final int webview=0x7f030029;
     }
     public static final class string {
         public static final int DepartmentStatic=0x7f090016;

@@ -204,7 +204,7 @@ public class CustomEventsLoader extends SherlockFragmentActivity {
         	try{
         		// we do our http lifting
         		HttpClient httpclient = new DefaultHttpClient();
-        		String url = "http://www.matthewfarmer.net/events.json";
+        		String url = "http://cs2.mwsu.edu/~msu2u/get_events_from_db.php";
         		HttpPost httppost = new HttpPost(url);
         		HttpResponse response = httpclient.execute(httppost);
         		

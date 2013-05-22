@@ -1,6 +1,6 @@
 /***************************************************
  **				MSU2U Copyright (c) 2012		  **	
- **		Property of Midwestern State University  **
+ **		Property of Midwerstern State University  **
  **				Computer Science Dept. 			  **
  ** ************************************************/ 
 
@@ -14,9 +14,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Arrays; 
 
-import com.android.msu2u.adapters.ButtonListAdapter;
-import com.android.msu2u.adapters.Contact;
-import com.android.msu2u.helpers.ButtonList;
 
 import com.google.gson.Gson;
 import org.apache.http.HttpEntity;
@@ -30,6 +27,9 @@ import android.content.Intent;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import com.actionbarsherlock.app.SherlockActivity;
+import com.android.msu2u.adapters.ButtonListAdapter;
+import com.android.msu2u.adapters.Contact;
+import com.android.msu2u.helpers.ButtonList;
 //import com.deitel.addressbook.AddressBook;
 //import com.deitel.addressbook.ViewContact;
 
@@ -44,7 +44,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Directory extends SherlockActivity implements OnItemClickListener{
+public class CopyOfDirectory extends SherlockActivity implements OnItemClickListener{
 	
 	public ListView listview;
 	public Contact[] people;
@@ -75,7 +75,7 @@ public class Directory extends SherlockActivity implements OnItemClickListener{
 		@Override
 		protected void onPreExecute(){
 			super.onPreExecute();
-	        Dialog = new ProgressDialog(Directory.this);
+	        Dialog = new ProgressDialog(CopyOfDirectory.this);
 	        Dialog.setMessage("Loading....");
 	        Dialog.show();
 		}
@@ -152,10 +152,10 @@ public class Directory extends SherlockActivity implements OnItemClickListener{
 				}
 			}
 			
-			ButtonListAdapter adapter = new ButtonListAdapter(Directory.this,R.layout.list_row, data);
+			ButtonListAdapter adapter = new ButtonListAdapter(CopyOfDirectory.this,R.layout.list_row, data);
 			listview = (ListView)findViewById(R.id.listView1);
 			listview.setClickable(true);
-			listview.setOnItemClickListener(Directory.this);
+			listview.setOnItemClickListener(CopyOfDirectory.this);
 			listview.setAdapter(adapter);
 			
 			Dialog.dismiss();
@@ -179,7 +179,7 @@ public class Directory extends SherlockActivity implements OnItemClickListener{
 		String image = people[position].getPicture();
 		
 		//Putting the values into our intent
-		Intent myIntent = new Intent(Directory.this,ViewContact.class);
+		Intent myIntent = new Intent(CopyOfDirectory.this,ViewContact.class);
 		myIntent.putExtra("fname",fname);
 		myIntent.putExtra("department",department);
 		myIntent.putExtra("email",email);
@@ -192,4 +192,3 @@ public class Directory extends SherlockActivity implements OnItemClickListener{
 	}
 	
 } // end Directory class
-
