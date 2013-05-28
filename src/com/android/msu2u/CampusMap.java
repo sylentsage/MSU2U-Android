@@ -1,6 +1,6 @@
 /***************************************************
  **				MSU2U Copyright (c) 2012		  **	
- **		Property of Midwerstern State University  **
+ **		Property of Midwestern State University  **
  **				Computer Science Dept. 			  **
  ** ************************************************/ 
 
@@ -8,29 +8,15 @@
 
 package com.android.msu2u;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
-import android.widget.TabHost;
-import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.android.msu2u.adapters.TabsAdapter;
-import com.android.msu2u.loaders.FragmentStackSupport;
 
-public class CampusMap extends SherlockActivity {
+public class CampusMap extends Activity  {
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.activity_campusmap);
-        
-        //TextView txtProduct = (TextView) findViewById(R.id.textView1);
-        
-        Intent i = getIntent();
-        // getting attached intent data
-        String menu = i.getStringExtra("button");
-        // displaying selected button name
-        //txtProduct.setText(menu);
-	} // end OnCreate
-} // end CampusMap Class
+        setContentView(R.layout.activity_campusmap);
+    }
+}

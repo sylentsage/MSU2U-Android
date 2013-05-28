@@ -70,7 +70,7 @@ public class MainMenu extends SherlockActivity implements OnItemClickListener{
 	    
 	    
 	    try {
-	    	// Whem Campus map is CLicked 
+	    	// When Campus map is CLicked 
 			if (clickedItemString.equals("Campus Map")){
 				Intent myIntent = new Intent(MainMenu.this, CampusMap.class);
 				myIntent.putExtra("button", clickedItemString);
