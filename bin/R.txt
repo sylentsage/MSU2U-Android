@@ -373,6 +373,7 @@ int id abs__textButton 0x7f050017
 int id abs__title 0x7f05001f
 int id abs__titleDivider 0x7f050020
 int id abs__up 0x7f05000f
+int id action_search 0x7f050056
 int id disableHome 0x7f05000d
 int id edit_query 0x7f05002b
 int id emailEditText 0x7f050045
@@ -459,6 +460,7 @@ int layout sherlock_spinner_dropdown_item 0x7f030027
 int layout sherlock_spinner_item 0x7f030028
 int layout webview 0x7f030029
 int menu map_menu 0x7f0c0000
+int menu searchview_in_menu 0x7f0c0001
 int string DepartmentStatic 0x7f06002b
 int string EmailStatic 0x7f06002e
 int string FaxStatic 0x7f06002d

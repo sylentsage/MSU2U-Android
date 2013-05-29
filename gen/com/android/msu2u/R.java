@@ -1158,6 +1158,7 @@ containing a value of this type.
         public static final int abs__title=0x7f05001f;
         public static final int abs__titleDivider=0x7f050020;
         public static final int abs__up=0x7f05000f;
+        public static final int action_search=0x7f050056;
         public static final int disableHome=0x7f05000d;
         public static final int edit_query=0x7f05002b;
         public static final int emailEditText=0x7f050045;
@@ -1250,6 +1251,7 @@ containing a value of this type.
     }
     public static final class menu {
         public static final int map_menu=0x7f0c0000;
+        public static final int searchview_in_menu=0x7f0c0001;
     }
     public static final class string {
         public static final int DepartmentStatic=0x7f06002b;
