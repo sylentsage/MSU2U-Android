@@ -39,13 +39,14 @@ import com.google.android.gms.maps.model.PolygonOptions;
 
 public class CampusMap extends Activity implements OnInfoWindowClickListener {
 
-	private final LatLng LOCATION_CLARKSC = new LatLng(33.874853, -98.521137);
-
+	// Variables 	
 	private GoogleMap map;
 	private static final String LOG_TAG = "MSU2U";
 	private int userIcon;
 	private Polygon polygons[] = new Polygon[70];
 	private boolean parking = true;
+	// used to center map view
+	private final LatLng LOCATION_CLARKSC = new LatLng(33.874853, -98.521137);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +54,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 		setContentView(R.layout.activity_campusmap);
 		setUpMapIfNeeded();
 
-		userIcon = R.drawable.chart;
-
+		userIcon = R.drawable.chart; // custom icon -> used a marker 
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
 		map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
@@ -1098,18 +1098,16 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 		}
 	}
 
-	protected void retrieveAndAddCities() throws IOException {
-		// HttpURLConnection conn = null;
+	// Retrieve all building to Campus Map
+	protected void retrieveAndAddBuildings() throws IOException {
 		final StringBuilder json = new StringBuilder();
 		InputStream file = getResources().openRawResource(R.raw.buildings);
 		char[] buffer = new char[1024];
 		try {
-
 			Reader reader = new BufferedReader(new InputStreamReader(file,
 					"UTF-8"));
 			int n;
 			while ((n = reader.read(buffer)) != -1) {
-				// writer.write(buffer, 0, n);
 				json.append(buffer, 0, n);
 			}
 		} catch (IOException e) {
@@ -1132,6 +1130,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 		});
 	}
 
+	// Create Map markers from json data
 	void createMarkersFromJson(String json) throws JSONException {
 		// De-serialize the JSON string into an array of city objects
 		JSONArray jsonArray = new JSONArray(json);
@@ -1154,7 +1153,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 		new Thread(new Runnable() {
 			public void run() {
 				try {
-					retrieveAndAddCities();
+					retrieveAndAddBuildings();
 				} catch (IOException e) {
 					Log.e(LOG_TAG, "Cannot retrive cities", e);
 					return;
