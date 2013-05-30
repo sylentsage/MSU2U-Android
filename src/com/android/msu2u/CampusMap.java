@@ -28,9 +28,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 
 public class CampusMap extends Activity implements OnInfoWindowClickListener {
@@ -39,12 +41,15 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 
 	private GoogleMap map;
 	private static final String LOG_TAG = "MSU2U";
+	private int userIcon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_campusmap);
 		setUpMapIfNeeded();
+
+		userIcon = R.drawable.chart;
 
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
@@ -57,7 +62,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 
 		// Zoom to default location upon loading
 		CameraUpdate update = CameraUpdateFactory.newLatLngZoom(
-				LOCATION_CLARKSC, (float) 16.75);
+				LOCATION_CLARKSC, (float) 16.50);
 		map.animateCamera(update);
 
 		// Add Parking
@@ -1083,11 +1088,11 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 			JSONObject jsonObj = jsonArray.getJSONObject(i);
 			map.addMarker(new MarkerOptions()
 					.title(jsonObj.getString("name"))
-					//.snippet(jsonObj.getString("info"))
+					// .snippet(jsonObj.getString("info"))
 					.position(
-							new LatLng(jsonObj.getDouble("latitude")
-									, jsonObj.getDouble(
-									"longitude"))));
+							new LatLng(jsonObj.getDouble("latitude"), jsonObj
+									.getDouble("longitude")))
+					.icon(BitmapDescriptorFactory.fromResource(userIcon)));
 		}
 	}
 
