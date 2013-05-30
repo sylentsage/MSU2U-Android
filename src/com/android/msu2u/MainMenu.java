@@ -9,8 +9,13 @@
 package com.android.msu2u;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.MenuInflater;
 import com.android.msu2u.helpers.ButtonList;
 import com.android.msu2u.adapters.ButtonListAdapter;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -100,4 +105,30 @@ public class MainMenu extends SherlockActivity implements OnItemClickListener{
 			 Toast.makeText(getApplicationContext(),"Activity Miss Match",Toast.LENGTH_SHORT).show();
 		}
 	} // end onItemClicked
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getSupportMenuInflater().inflate(R.menu.about_menu, menu);
+		return true;
+	}
+
+	// handle choice from options menu
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// perform appropriate task based on
+		switch (item.getItemId()) {
+		case R.id.about: // the user selected "Map Key"
+			
+			Intent myIntent = new Intent(MainMenu.this, About.class);
+			//myIntent.putExtra("button", clickedItemString);
+			startActivity(myIntent);
+			
+			//Toast.makeText(getApplicationContext(), "About will be shown",
+				//	Toast.LENGTH_SHORT).show();
+			return true;			
+		default:
+			return super.onOptionsItemSelected(item);
+		} // end switch
+	} // end method onOptionsItemSelected
 } // end MainMenu Class

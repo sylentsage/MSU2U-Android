@@ -64,6 +64,10 @@
             android:name=".Media"
             android:label="Media" >
         </activity>
+        <activity
+            android:name=".About"
+            android:label="About" >
+        </activity>
         
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

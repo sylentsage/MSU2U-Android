@@ -1116,9 +1116,10 @@ containing a value of this type.
     }
     public static final class id {
         public static final int DepartmentEditText=0x7f060043;
-        public static final int LinearLayout=0x7f06003c;
-        public static final int LinearLayout1=0x7f060038;
-        public static final int RelativeLayout1=0x7f06003a;
+        public static final int LinearLayout=0x7f06003d;
+        public static final int LinearLayout1=0x7f06003a;
+        public static final int RelativeLayout1=0x7f060037;
+        public static final int about=0x7f060054;
         public static final int abs__action_bar=0x7f060026;
         public static final int abs__action_bar_container=0x7f060025;
         public static final int abs__action_bar_subtitle=0x7f060015;
@@ -1159,7 +1160,6 @@ containing a value of this type.
         public static final int abs__title=0x7f06001f;
         public static final int abs__titleDivider=0x7f060020;
         public static final int abs__up=0x7f06000f;
-        public static final int action_search=0x7f060056;
         public static final int disableHome=0x7f06000d;
         public static final int edit_query=0x7f06002b;
         public static final int emailEditText=0x7f060045;
@@ -1169,17 +1169,17 @@ containing a value of this type.
         public static final int hybrid=0x7f060004;
         public static final int icon=0x7f06004d;
         public static final int listMode=0x7f060006;
-        public static final int listView=0x7f06003b;
-        public static final int listView1=0x7f060039;
+        public static final int listView=0x7f06003c;
+        public static final int listView1=0x7f06003b;
         public static final int list_image=0x7f060050;
-        public static final int map=0x7f060037;
-        public static final int mapKey=0x7f060054;
+        public static final int map=0x7f060039;
+        public static final int mapKey=0x7f060055;
         public static final int nameEditText=0x7f060044;
         public static final int new_fragment=0x7f06004a;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int pager=0x7f06004b;
-        public static final int parking=0x7f060055;
+        public static final int parking=0x7f060056;
         public static final int phone1EditText=0x7f060042;
         public static final int photoImageView=0x7f060048;
         public static final int satellite=0x7f060002;
@@ -1193,7 +1193,7 @@ containing a value of this type.
         public static final int text=0x7f06004c;
         public static final int text1=0x7f06004e;
         public static final int text2=0x7f06004f;
-        public static final int textView1=0x7f06003d;
+        public static final int textView1=0x7f060038;
         public static final int textView2=0x7f06003f;
         public static final int textView3=0x7f060040;
         public static final int textView4=0x7f060041;
@@ -1230,29 +1230,30 @@ containing a value of this type.
         public static final int abs__search_dropdown_item_icons_2line=0x7f030014;
         public static final int abs__search_view=0x7f030015;
         public static final int abs__simple_dropdown_hint=0x7f030016;
-        public static final int activity_campusmap=0x7f030017;
-        public static final int activity_directory=0x7f030018;
-        public static final int activity_events=0x7f030019;
-        public static final int activity_main=0x7f03001a;
-        public static final int activity_media=0x7f03001b;
-        public static final int activity_rest_loader=0x7f03001c;
-        public static final int activity_splash=0x7f03001d;
-        public static final int activity_viewcontact=0x7f03001e;
-        public static final int fragment_stack=0x7f03001f;
-        public static final int fragment_tabs_pager=0x7f030020;
-        public static final int hello_world=0x7f030021;
-        public static final int item_label_list=0x7f030022;
-        public static final int list_item_icon_text=0x7f030023;
-        public static final int list_item_icon_text_2=0x7f030024;
-        public static final int list_item_text_dynamic=0x7f030025;
-        public static final int list_row=0x7f030026;
-        public static final int sherlock_spinner_dropdown_item=0x7f030027;
-        public static final int sherlock_spinner_item=0x7f030028;
-        public static final int webview=0x7f030029;
+        public static final int activity_about=0x7f030017;
+        public static final int activity_campusmap=0x7f030018;
+        public static final int activity_directory=0x7f030019;
+        public static final int activity_events=0x7f03001a;
+        public static final int activity_main=0x7f03001b;
+        public static final int activity_media=0x7f03001c;
+        public static final int activity_rest_loader=0x7f03001d;
+        public static final int activity_splash=0x7f03001e;
+        public static final int activity_viewcontact=0x7f03001f;
+        public static final int fragment_stack=0x7f030020;
+        public static final int fragment_tabs_pager=0x7f030021;
+        public static final int hello_world=0x7f030022;
+        public static final int item_label_list=0x7f030023;
+        public static final int list_item_icon_text=0x7f030024;
+        public static final int list_item_icon_text_2=0x7f030025;
+        public static final int list_item_text_dynamic=0x7f030026;
+        public static final int list_row=0x7f030027;
+        public static final int sherlock_spinner_dropdown_item=0x7f030028;
+        public static final int sherlock_spinner_item=0x7f030029;
+        public static final int webview=0x7f03002a;
     }
     public static final class menu {
-        public static final int map_menu=0x7f0d0000;
-        public static final int searchview_in_menu=0x7f0d0001;
+        public static final int about_menu=0x7f0d0000;
+        public static final int map_menu=0x7f0d0001;
     }
     public static final class raw {
         public static final int buildings=0x7f040000;
