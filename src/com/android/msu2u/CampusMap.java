@@ -8,24 +8,21 @@
 
 package com.android.msu2u;
 
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
-import android.annotation.SuppressLint;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
-import android.app.SearchManager;
-import android.app.SearchableInfo;
-import android.content.Context;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.Window;
-import android.widget.SearchView;
-import android.widget.TextView;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,38 +31,20 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 
 public class CampusMap extends Activity implements OnInfoWindowClickListener {
-	// private LocationManager locationManager;
 
-	private final int RQS_GooglePlayServices = 1;
-	private final LatLng LOCATION_DILLARD = new LatLng(33.876892, -98.52134);
-	private final LatLng LOCATION_MOFFETTLIBRARY = new LatLng(33.874683,
-			-98.519240);
-	private final LatLng LOCATION_BOLIN = new LatLng(33.873779, -98.519562);
-	private final LatLng LOCATION_HARDIN = new LatLng(33.876171, -98.519796);
-	private final LatLng LOCATION_BRIDWELL = new LatLng(33.877382, -98.52237);
-	private final LatLng LOCATION_FAINFINE = new LatLng(33.873329, -98.522875);
 	private final LatLng LOCATION_CLARKSC = new LatLng(33.874853, -98.521137);
-	private final LatLng LOCATION_PIERCEHALL = new LatLng(33.874078, -98.522381);
-	private final LatLng LOCATION_KILLINGSWORTH = new LatLng(33.87487,
-			-98.522317);
-	private final LatLng LOCATION_MCCULLOUGH = new LatLng(33.875084, -98.523111);
-	private final LatLng LOCATION_MCCOY = new LatLng(33.876447, -98.522295);
-	private final LatLng LOCATION_FERGUSON = new LatLng(33.875453, -98.521059);
-	private final LatLng LOCATION_MARTIN = new LatLng(33.876148, -98.52166);
-	private final LatLng LOCATION_PROTHRO = new LatLng(33.873837, -98.521104);
-	private final LatLng LOCATION_BEAWOOD = new LatLng(33.873971, -98.521619);
-	private final LatLng LOCATION_ODONOHOE = new LatLng(33.873962, -98.520579);
 
 	private GoogleMap map;
+	private static final String LOG_TAG = "MSU2U";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_campusmap);
+		setUpMapIfNeeded();
 
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
@@ -81,8 +60,6 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				LOCATION_CLARKSC, (float) 16.75);
 		map.animateCamera(update);
 
-		// Add Building Markers
-		addBuildMarkers();
 		// Add Parking
 		addStudentParking();
 		addReservedParking();
@@ -90,64 +67,11 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 		addHybridParking();
 	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		int resultCode = GooglePlayServicesUtil
-				.isGooglePlayServicesAvailable(getApplicationContext());
-		if (resultCode == ConnectionResult.SUCCESS) {
-			Toast.makeText(getApplicationContext(), "Connection Established",
-					Toast.LENGTH_SHORT).show();
-		} else {
-			GooglePlayServicesUtil.getErrorDialog(resultCode, this,
-					RQS_GooglePlayServices);
-		}
-	}
-
 	public void onInfoWindowClick(Marker marker) {
 		Toast.makeText(getBaseContext(),
 				"Info Window clicked@" + marker.getId(), Toast.LENGTH_SHORT)
 				.show();
 
-	}
-
-	// Adds Building markers to the map
-	private void addBuildMarkers() {
-		// Add pointers to map
-		map.addMarker(new MarkerOptions().position(LOCATION_DILLARD)
-				.title("Dillard College of Business")
-				.snippet("Population: 4,137,400"));
-		map.addMarker(new MarkerOptions().position(LOCATION_MOFFETTLIBRARY)
-				.title("Moffett Library").snippet("Population: 4,137,400"));
-		map.addMarker(new MarkerOptions().position(LOCATION_BOLIN)
-				.title("Bolin Hall").snippet("Population: 4,137,400"));
-		map.addMarker(new MarkerOptions().position(LOCATION_HARDIN)
-				.title("Hardin Administrative Building")
-				.snippet("Population: 4,137,400"));
-		map.addMarker(new MarkerOptions().position(LOCATION_BRIDWELL)
-				.title("Bridwell Hall").snippet("Population: 4,137,400"));
-		map.addMarker(new MarkerOptions().position(LOCATION_FAINFINE).title(
-				"Fain Fine Arts Building"));
-		map.addMarker(new MarkerOptions().position(LOCATION_CLARKSC).title(
-				"Clark Student Center"));
-		map.addMarker(new MarkerOptions().position(LOCATION_PIERCEHALL).title(
-				"Pierce Hall"));
-		map.addMarker(new MarkerOptions().position(LOCATION_KILLINGSWORTH)
-				.title("Killingsworth Hall"));
-		map.addMarker(new MarkerOptions().position(LOCATION_MCCULLOUGH).title(
-				"McCullough-Trigg"));
-		map.addMarker(new MarkerOptions().position(LOCATION_MCCOY).title(
-				"McCoy Engineering Building"));
-		map.addMarker(new MarkerOptions().position(LOCATION_FERGUSON).title(
-				"Ferguson Hall"));
-		map.addMarker(new MarkerOptions().position(LOCATION_MARTIN).title(
-				"Martin Hall"));
-		map.addMarker(new MarkerOptions().position(LOCATION_PROTHRO).title(
-				"Prothro-Yeager Hall"));
-		map.addMarker(new MarkerOptions().position(LOCATION_BEAWOOD).title(
-				"Bea Wood Hall"));
-		map.addMarker(new MarkerOptions().position(LOCATION_ODONOHOE).title(
-				"O'Donohoe Hall"));
 	}
 
 	// Adds Student Parking - Draws yellow Polygons on the Map
@@ -1116,4 +1040,91 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 		map.addPolygon(rectOptions);
 
 	}
+
+	protected void retrieveAndAddCities() throws IOException {
+		// HttpURLConnection conn = null;
+		final StringBuilder json = new StringBuilder();
+		InputStream file = getResources().openRawResource(R.raw.buildings);
+		char[] buffer = new char[1024];
+		try {
+
+			Reader reader = new BufferedReader(new InputStreamReader(file,
+					"UTF-8"));
+			int n;
+			while ((n = reader.read(buffer)) != -1) {
+				// writer.write(buffer, 0, n);
+				json.append(buffer, 0, n);
+			}
+		} catch (IOException e) {
+			Log.e(LOG_TAG, "Error connecting to service", e);
+			throw new IOException("Error connecting to service", e);
+		} finally {
+			file.close();
+		}
+
+		// Create markers for the city data.
+		// Must run this on the UI thread since it's a UI operation.
+		runOnUiThread(new Runnable() {
+			public void run() {
+				try {
+					createMarkersFromJson(json.toString());
+				} catch (JSONException e) {
+					Log.e(LOG_TAG, "Error processing JSON", e);
+				}
+			}
+		});
+	}
+
+	void createMarkersFromJson(String json) throws JSONException {
+		// De-serialize the JSON string into an array of city objects
+		JSONArray jsonArray = new JSONArray(json);
+		for (int i = 0; i < jsonArray.length(); i++) {
+			// Create a marker for each city in the JSON data.
+			JSONObject jsonObj = jsonArray.getJSONObject(i);
+			map.addMarker(new MarkerOptions()
+					.title(jsonObj.getString("name"))
+					//.snippet(jsonObj.getString("info"))
+					.position(
+							new LatLng(jsonObj.getDouble("latitude")
+									, jsonObj.getDouble(
+									"longitude"))));
+		}
+	}
+
+	private void setUpMap() {
+		// Retrieve the city data from the web service
+		// In a worker thread since it's a network operation.
+		new Thread(new Runnable() {
+			public void run() {
+				try {
+					retrieveAndAddCities();
+				} catch (IOException e) {
+					Log.e(LOG_TAG, "Cannot retrive cities", e);
+					return;
+				}
+			}
+		}).start();
+	}
+
+	private void setUpMapIfNeeded() {
+		if (map == null) {
+			map = ((MapFragment) getFragmentManager()
+					.findFragmentById(R.id.map)).getMap();
+			if (map != null) {
+				setUpMap();
+			}
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		setUpMapIfNeeded();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
 }
