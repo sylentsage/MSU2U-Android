@@ -81,7 +81,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 	 * user to use navigation to navigate to location */
 	 public void onInfoWindowClick(Marker marker) {
 		Toast.makeText(getBaseContext(),
-				"Info Window clicked@" + marker.getTitle(), Toast.LENGTH_SHORT)
+				 marker.getTitle(), Toast.LENGTH_SHORT)
 				.show();
 	}
 	
