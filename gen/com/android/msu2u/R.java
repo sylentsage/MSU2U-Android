@@ -1173,16 +1173,16 @@ containing a value of this type.
         public static final int listView1=0x7f060039;
         public static final int list_image=0x7f060050;
         public static final int map=0x7f060037;
-        public static final int mapItem=0x7f060054;
+        public static final int mapKey=0x7f060054;
         public static final int nameEditText=0x7f060044;
         public static final int new_fragment=0x7f06004a;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int pager=0x7f06004b;
+        public static final int parking=0x7f060055;
         public static final int phone1EditText=0x7f060042;
         public static final int photoImageView=0x7f060048;
         public static final int satellite=0x7f060002;
-        public static final int satelliteItem=0x7f060055;
         public static final int showCustom=0x7f06000c;
         public static final int showHome=0x7f060009;
         public static final int showTitle=0x7f06000b;
@@ -1388,9 +1388,9 @@ containing a value of this type.
         public static final int location_client_ulr_inactive_age_unknown=0x7f070013;
         public static final int location_client_ulr_inactive_unknown_restriction=0x7f070014;
         public static final int menu_settings=0x7f070026;
-        public static final int menuitem_map=0x7f070030;
-        public static final int menuitem_satellite=0x7f070031;
         public static final int new_fragment=0x7f070029;
+        public static final int parkingShowHide=0x7f070031;
+        public static final int showMapKey=0x7f070030;
         public static final int textview=0x7f07002f;
         public static final int title_activity_main=0x7f070027;
     }

@@ -21,6 +21,8 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -42,6 +44,8 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 	private GoogleMap map;
 	private static final String LOG_TAG = "MSU2U";
 	private int userIcon;
+	private Polygon polygons[] = new Polygon[70];
+	private boolean parking = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +74,53 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 		addReservedParking();
 		addResidentialParking();
 		addHybridParking();
+		parking = true;
 	}
 
-	public void onInfoWindowClick(Marker marker) {
+	/* TODO: When user click on marker's info box it will prompt 
+	 * user to use navigation to navigate to location */
+	 public void onInfoWindowClick(Marker marker) {
 		Toast.makeText(getBaseContext(),
-				"Info Window clicked@" + marker.getId(), Toast.LENGTH_SHORT)
+				"Info Window clicked@" + marker.getTitle(), Toast.LENGTH_SHORT)
 				.show();
-
 	}
+	
+	/*TODO: Use menu button to show user Map key and remove makers and parking
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.map_menu, menu);
+		return true;
+	}
+
+	// handle choice from options menu
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// perform appropriate task based on
+		switch (item.getItemId()) {
+		case R.id.mapKey: // the user selected "Map Key"
+			// Show custom toast with Key;
+			Toast.makeText(getApplicationContext(), "Key Will Be Shown",
+					Toast.LENGTH_SHORT).show();
+			return true;
+		case R.id.parking: // the user selected "show/hide parking"
+			if (parking == false) {
+				addHybridParking();
+				addReservedParking();
+				addResidentialParking();
+				addStudentParking();
+				return true;
+			} else {
+				removeAllParking();
+				parking = false;
+				return true;
+			}
+		default:
+			return super.onOptionsItemSelected(item);
+		} // end switch
+	} // end method onOptionsItemSelected
+	
+	*/
 
 	// Adds Student Parking - Draws yellow Polygons on the Map
 	private void addStudentParking() {
@@ -94,7 +137,8 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		Polygon polygon0 = map.addPolygon(rectOptions);
+		polygons[0] = polygon0;
 
 		// Bolin Parking Lot
 		rectOptions = new PolygonOptions()
@@ -108,7 +152,8 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		Polygon polygon1 = map.addPolygon(rectOptions);
+		polygons[1] = polygon1;
 
 		// Prothro Yeager Parking Lot
 		rectOptions = new PolygonOptions()
@@ -120,7 +165,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[2] = map.addPolygon(rectOptions);
 
 		// Louis Rodriguez New
 		rectOptions = new PolygonOptions()
@@ -132,7 +177,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[3] = map.addPolygon(rectOptions);
 
 		// Louis Rodriguez New 2
 		rectOptions = new PolygonOptions()
@@ -146,7 +191,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[4] = map.addPolygon(rectOptions);
 
 		// Dillard Commuter 1
 		rectOptions = new PolygonOptions()
@@ -160,7 +205,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[5] = map.addPolygon(rectOptions);
 
 		// Dillard Commuter 2 East
 		rectOptions = new PolygonOptions()
@@ -176,7 +221,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[6] = map.addPolygon(rectOptions);
 
 		// Hardin North
 		rectOptions = new PolygonOptions()
@@ -195,7 +240,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[7] = map.addPolygon(rectOptions);
 
 		// Hardin Street Moffett Commuter
 		rectOptions = new PolygonOptions()
@@ -207,7 +252,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[8] = map.addPolygon(rectOptions);
 
 		// Hardin Taft South Commuter
 		rectOptions = new PolygonOptions()
@@ -219,7 +264,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[9] = map.addPolygon(rectOptions);
 
 		// Hardin Taft North Commuter
 		rectOptions = new PolygonOptions()
@@ -231,7 +276,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[10] = map.addPolygon(rectOptions);
 
 		// Student Union Street East
 		rectOptions = new PolygonOptions()
@@ -243,7 +288,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[11] = map.addPolygon(rectOptions);
 
 		// Student Union Street North
 		rectOptions = new PolygonOptions()
@@ -255,7 +300,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[12] = map.addPolygon(rectOptions);
 
 		// Fain
 		rectOptions = new PolygonOptions()
@@ -269,7 +314,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[13] = map.addPolygon(rectOptions);
 
 		// Fain West Commuter
 		rectOptions = new PolygonOptions()
@@ -281,7 +326,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[14] = map.addPolygon(rectOptions);
 
 		// Power Plant South
 		rectOptions = new PolygonOptions()
@@ -293,7 +338,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[15] = map.addPolygon(rectOptions);
 
 		// DL Ligon Street West
 		rectOptions = new PolygonOptions()
@@ -305,7 +350,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[16] = map.addPolygon(rectOptions);
 
 		// DL Ligon Street South East
 		rectOptions = new PolygonOptions()
@@ -317,7 +362,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[17] = map.addPolygon(rectOptions);
 
 		// DL Ligon Street North West
 		rectOptions = new PolygonOptions()
@@ -329,7 +374,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[18] = map.addPolygon(rectOptions);
 
 		// DL Ligon Street North East
 		rectOptions = new PolygonOptions()
@@ -341,7 +386,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[19] = map.addPolygon(rectOptions);
 
 		// Soccer Softball
 		rectOptions = new PolygonOptions()
@@ -353,7 +398,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7ff0ff00).strokeColor(0x7ff0ff00);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[20] = map.addPolygon(rectOptions);
 	}
 
 	// Adds Reserved Parking - Draws Blue Polygons on the Map
@@ -370,7 +415,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[21] = map.addPolygon(rectOptions);
 
 		// Bolin Hall Reserved 1
 		rectOptions = new PolygonOptions()
@@ -382,7 +427,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[22] = map.addPolygon(rectOptions);
 
 		// Bolin Hall Reserved 2
 		rectOptions = new PolygonOptions()
@@ -394,7 +439,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[23] = map.addPolygon(rectOptions);
 
 		// Prothro Yeager Parking Lot 1
 		rectOptions = new PolygonOptions()
@@ -407,7 +452,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[24] = map.addPolygon(rectOptions);
 
 		// Prothro Yeager Parking Lot 2
 		rectOptions = new PolygonOptions()
@@ -420,7 +465,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[25] = map.addPolygon(rectOptions);
 
 		// Prothro Yeager Parking Lot 3
 		rectOptions = new PolygonOptions()
@@ -432,7 +477,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[26] = map.addPolygon(rectOptions);
 
 		// Prothro Yeager Parking Lot 4
 		rectOptions = new PolygonOptions()
@@ -444,7 +489,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[27] = map.addPolygon(rectOptions);
 
 		// Teepee Parking Lot 4
 		rectOptions = new PolygonOptions()
@@ -456,7 +501,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[28] = map.addPolygon(rectOptions);
 
 		// Teepee Parking Lot 4
 		rectOptions = new PolygonOptions()
@@ -468,7 +513,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[29] = map.addPolygon(rectOptions);
 
 		// Fain Parking Lot 1
 		rectOptions = new PolygonOptions()
@@ -480,7 +525,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[30] = map.addPolygon(rectOptions);
 
 		// McCullough Parking Lot
 		rectOptions = new PolygonOptions()
@@ -492,7 +537,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[31] = map.addPolygon(rectOptions);
 
 		// Paint Building Lot
 		rectOptions = new PolygonOptions()
@@ -504,7 +549,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[32] = map.addPolygon(rectOptions);
 
 		// Police Lot(Reserved)
 		rectOptions = new PolygonOptions()
@@ -520,7 +565,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[33] = map.addPolygon(rectOptions);
 
 		// Bridwell 0
 		rectOptions = new PolygonOptions()
@@ -532,7 +577,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[34] = map.addPolygon(rectOptions);
 
 		// Bridwell 1
 		rectOptions = new PolygonOptions()
@@ -544,7 +589,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[35] = map.addPolygon(rectOptions);
 
 		// Bridwell 2
 		rectOptions = new PolygonOptions()
@@ -556,7 +601,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[36] = map.addPolygon(rectOptions);
 
 		// Bridwell 3
 		rectOptions = new PolygonOptions()
@@ -568,7 +613,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[37] = map.addPolygon(rectOptions);
 
 		// Dillard
 		rectOptions = new PolygonOptions()
@@ -585,7 +630,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[36] = map.addPolygon(rectOptions);
 
 		// Dillard 2 Coords (West South)
 		rectOptions = new PolygonOptions()
@@ -597,7 +642,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[39] = map.addPolygon(rectOptions);
 
 		// Dillard 3 Coords (East South)
 		rectOptions = new PolygonOptions()
@@ -615,7 +660,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[40] = map.addPolygon(rectOptions);
 
 		// Hardin Administration Building
 		rectOptions = new PolygonOptions()
@@ -634,7 +679,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[41] = map.addPolygon(rectOptions);
 
 		// Hardin Street Plaza 1 North
 		rectOptions = new PolygonOptions()
@@ -646,7 +691,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[42] = map.addPolygon(rectOptions);
 
 		// Hardin Street Plaza 2 Middle
 		rectOptions = new PolygonOptions()
@@ -658,7 +703,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[43] = map.addPolygon(rectOptions);
 
 		// Hardin Street Plaza 3 South
 		rectOptions = new PolygonOptions()
@@ -670,7 +715,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[44] = map.addPolygon(rectOptions);
 
 		// Hardin Street Moffett West
 		rectOptions = new PolygonOptions()
@@ -682,7 +727,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[45] = map.addPolygon(rectOptions);
 
 		// Hardin Street Moffett East
 		rectOptions = new PolygonOptions()
@@ -694,7 +739,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[46] = map.addPolygon(rectOptions);
 
 		// Bolin Street Reserved
 		rectOptions = new PolygonOptions()
@@ -706,7 +751,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[47] = map.addPolygon(rectOptions);
 
 		// Fain West Reserved
 		rectOptions = new PolygonOptions()
@@ -729,7 +774,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[48] = map.addPolygon(rectOptions);
 
 		// Daniel Building South
 		rectOptions = new PolygonOptions()
@@ -747,7 +792,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[49] = map.addPolygon(rectOptions);
 
 		// DL Ligon Street East Middle
 		rectOptions = new PolygonOptions()
@@ -759,7 +804,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[50] = map.addPolygon(rectOptions);
 
 		// DL Ligon Street East Middle
 		rectOptions = new PolygonOptions()
@@ -771,7 +816,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[51] = map.addPolygon(rectOptions);
 
 		// DL Ligon Street North
 		rectOptions = new PolygonOptions()
@@ -783,7 +828,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[52] = map.addPolygon(rectOptions);
 
 		// Soccer Softball North
 		rectOptions = new PolygonOptions()
@@ -795,7 +840,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[53] = map.addPolygon(rectOptions);
 
 		// Wellness Center North
 		rectOptions = new PolygonOptions()
@@ -807,7 +852,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[54] = map.addPolygon(rectOptions);
 
 		// Wellness Center South
 		rectOptions = new PolygonOptions()
@@ -819,7 +864,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[55] = map.addPolygon(rectOptions);
 
 		// Sundancer North
 		rectOptions = new PolygonOptions()
@@ -831,7 +876,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[56] = map.addPolygon(rectOptions);
 
 		// Sundancer South
 		rectOptions = new PolygonOptions()
@@ -843,7 +888,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 				.fillColor(0x7f269cb5).strokeColor(0x7f269cb5);
 
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[57] = map.addPolygon(rectOptions);
 	}
 
 	// Adds Residential Parking - Draws Red Polygons on the Map
@@ -857,7 +902,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.874362, -98.522066))
 				.fillColor(0x7ff90404).strokeColor(0x7ff90404);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[58] = map.addPolygon(rectOptions);
 
 		// Fain Residential Lot (Residential)
 		rectOptions = new PolygonOptions()
@@ -874,7 +919,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.875044, -98.523568))
 				.fillColor(0x7ff90404).strokeColor(0x7ff90404);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[59] = map.addPolygon(rectOptions);
 
 		// Fain Residential Lot (Residential)
 		rectOptions = new PolygonOptions()
@@ -889,7 +934,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.874464, -98.523501))
 				.fillColor(0x7ff90404).strokeColor(0x7ff90404);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[60] = map.addPolygon(rectOptions);
 
 		// Fain Residential Lot (Residential)
 		rectOptions = new PolygonOptions()
@@ -912,7 +957,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.875348, -98.524573))
 				.fillColor(0x7ff90404).strokeColor(0x7ff90404);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[61] = map.addPolygon(rectOptions);
 
 		// Bridwell Courts (Residential)
 		rectOptions = new PolygonOptions()
@@ -931,7 +976,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.877349, -98.524567))
 				.fillColor(0x7ff90404).strokeColor(0x7ff90404);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[62] = map.addPolygon(rectOptions);
 
 		// Sunwatcher Street North
 		rectOptions = new PolygonOptions()
@@ -942,7 +987,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.874694, -98.523767))
 				.fillColor(0x7ff90404).strokeColor(0x7ff90404);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[63] = map.addPolygon(rectOptions);
 
 		// Sunwatcher Street South
 		rectOptions = new PolygonOptions()
@@ -953,7 +998,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.874418, -98.523769))
 				.fillColor(0x7ff90404).strokeColor(0x7ff90404);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[64] = map.addPolygon(rectOptions);
 
 		// Sundance Court
 		rectOptions = new PolygonOptions()
@@ -1003,7 +1048,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.871006, -98.526123))
 				.fillColor(0x7ff90404).strokeColor(0x7ff90404);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[65] = map.addPolygon(rectOptions);
 
 	}
 
@@ -1018,7 +1063,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.872399, -98.522075))
 				.fillColor(0x7ff9b104).strokeColor(0x7ff9b104);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[66] = map.addPolygon(rectOptions);
 
 		// Church1 Louis Rodriguez Drive
 		rectOptions = new PolygonOptions()
@@ -1031,7 +1076,7 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.873521, -98.52512)).fillColor(0x7ff9b104)
 				.strokeColor(0x7ff9b104);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[67] = map.addPolygon(rectOptions);
 
 		// Louis Rodriguez Drive Hybrid
 		rectOptions = new PolygonOptions()
@@ -1042,8 +1087,15 @@ public class CampusMap extends Activity implements OnInfoWindowClickListener {
 						new LatLng(33.876498, -98.524306))
 				.fillColor(0x7ff9b104).strokeColor(0x7ff9b104);
 		// Get back the mutable Polygon
-		map.addPolygon(rectOptions);
+		polygons[68] = map.addPolygon(rectOptions);
 
+	}
+
+	// Remove all parking - Delete Polygons from map
+	private void removeAllParking() {
+		for (Polygon poly : polygons) {
+			poly.remove();
+		}
 	}
 
 	protected void retrieveAndAddCities() throws IOException {
